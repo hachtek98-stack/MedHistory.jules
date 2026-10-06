@@ -1,0 +1,19 @@
+Structure UX MedHistory :
+
+1. Écran Formulaire Consultation :
+- Champ Date (Aujourd'hui par défaut)
+- Médecin, Spécialité, Établissement (Facultatifs)
+- Motif & Diagnostic (Texte libre)
+- Puces d'association de maladies (Multi-sélection)
+- Scan/Photo de document
+- Bouton principal : ENREGISTRER LA CONSULTATION (Bouton large min 56px)
+
+2. Écran Confirmation (Post-Enregistrement) :
+- Message de succès
+- Actions liées : 💊 Ajouter un traitement | 🧪 Ajouter un examen | 📄 Ajouter un document
+- Bouton : TERMINER
+
+3. Écran Chronologie :
+- Timeline verticale filtrable par badges de maladies
+- Barre de recherche textuelle globale (FTS5)
+- Bouton d'action flottant d'ajout rapide
