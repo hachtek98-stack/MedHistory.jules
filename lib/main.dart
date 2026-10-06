@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'features/auth/domain/auth_controller.dart';
 import 'features/auth/presentation/auth_screen.dart';
+import 'features/consultations/presentation/consultation_form_screen.dart';
+import 'features/diseases/presentation/disease_list_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,10 +27,9 @@ class MedHistoryApp extends ConsumerWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF0F52BA), // Bleu médical professionnel
+          seedColor: const Color(0xFF0F52BA),
           brightness: Brightness.light,
         ),
-        // Accessibilité Senior : Dynamic Type support & contraste élevé
         textTheme: const TextTheme(
           headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           bodyLarge: TextStyle(fontSize: 18),
@@ -104,23 +105,39 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Bienvenue dans MedHistory',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 12),
-              const Text(
-                'Vos données médicales sont sécurisées sur cet appareil.',
-                style: TextStyle(fontSize: 16),
-              ),
-              const Spacer(),
+
               SizedBox(
-                height: 56, // Senior size
+                height: 56,
+                child: OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    side: BorderSide(color: Theme.of(context).primaryColor, width: 2),
+                  ),
+                  icon: const Icon(Icons.folder_special_outlined, size: 28),
+                  label: const Text('GÉRER MES MALADIES', style: TextStyle(fontSize: 18)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const DiseaseListScreen()),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              SizedBox(
+                height: 56,
                 child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).primaryColor,
+                    foregroundColor: Colors.white,
+                  ),
                   icon: const Icon(Icons.add_circle_outline, size: 28),
                   label: const Text('NOUVELLE CONSULTATION', style: TextStyle(fontSize: 18)),
                   onPressed: () {
-                    // Action consultation (Sprint 2)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const ConsultationFormScreen()),
+                    );
                   },
                 ),
               ),
